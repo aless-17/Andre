@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🐥</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to top, #b3e5fc, #e1f5fe);
+      font-family: 'Comic Sans MS', cursive;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .dibujo-container {
+      width: 200px;
+      animation: saltito 2s ease-in-out infinite;
+    }
+
+    @keyframes saltito {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .carta {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 300px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      margin-top: 30px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #ffcc33;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #ffdd55;
+    }
+  </style>
+</head>
+<body>
+  <div class="dibujo-container">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <!-- Cuerpo del pollito -->
+      <circle cx="100" cy="100" r="50" fill="#ffeb3b" />
+      <!-- Alas -->
+      <ellipse cx="60" cy="100" rx="15" ry="25" fill="#ffeb3b" />
+      <ellipse cx="140" cy="100" rx="15" ry="25" fill="#ffeb3b" />
+      <!-- Carita -->
+      <circle cx="85" cy="90" r="5" fill="#000" />
+      <circle cx="115" cy="90" r="5" fill="#000" />
+      <path d="M85 110 Q100 120 115 110" stroke="#000" stroke-width="2" fill="none" />
+      <!-- Pico -->
+      <polygon points="95,100 105,100 100,110" fill="#f57c00" />
+      <!-- Patitas -->
+      <line x1="90" y1="150" x2="90" y2="165" stroke="#f57c00" stroke-width="4" />
+      <line x1="110" y1="150" x2="110" y2="165" stroke="#f57c00" stroke-width="4" />
+    </svg>
+  </div>
+
+  <div class="carta" id="carta">
+    <h2>Hola 🐥</h2>
+    <p>
+        ¡Feliz cumpleaños! 🐣<br>
+        Gracias por ser una persona tan especial. Espero que este nuevo año esté lleno de alegrías, aventuras y mucho amor. 💛
+    </p>
+    <button onclick="descargarCarta()">📄 Descargar Carta</button>
+  </div>
+
+  <script>
+    function descargarCarta() {
+      const texto = `Hola 🐥\n\nFelicidades en tu día, peldon por no felicitarte antes mi corazoncito \nEspero la pasaras super bien con tus seres queridos, que sea una edad donde te vaya muy bien, que Dios te bendiga hoy y siempre. Te quiro un montón, gracias por tu existencia y que la vida me permita seguir teniendote como amistad, felices 19 a la colochita mas bonita, tqm♡`;
+      const blob = new Blob([texto], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'pollito_carta_para_ti.txt';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>
+
